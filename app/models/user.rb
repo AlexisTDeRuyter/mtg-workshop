@@ -19,10 +19,6 @@ class User < ActiveRecord::Base
     return user if user && user.password == password
   end
 
-  def authenticate(password)
-    self.password.is_password? password
-  end
-
   private
   def password_present
     errors.add(:password, "cannot be blank") if self.password == ""
