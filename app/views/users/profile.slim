@@ -16,10 +16,14 @@ div.row
       div.col.s12.m12.l5
         h2.flow-text Add a card:
     div.row
+      == slim :'_errors'
       form action='/cards' method='post'
         div.input-field.col.s12.m12.l5
           label for='card_name' Card Name
           input type='text' name='card[name]'
+        div.input-field.col.s12.m12.l2
+          label for='quantity' Quantity
+          input type='text' name='card[quantity]'
         div.col.s12.m12.l5
           button.btn.waves-effect.waves-light.margin-top-20 type='submit' name='action' Add
 
