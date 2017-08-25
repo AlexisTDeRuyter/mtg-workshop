@@ -5,7 +5,7 @@ get '/decks/:id' do
 end
 
 post '/decks' do
-  halt(404, slim(:'404')) unless logged_in
+  halt(404, slim(:'404')) unless logged_in?
   params[:deck][:user] = current_user
   deck = Deck.create(params[:deck])
   if deck.save
