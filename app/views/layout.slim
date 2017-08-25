@@ -23,7 +23,7 @@ body
               li
                 a href='/profile' = current_user.username
               li
-                == slim :'/sessions/logout_form'
+                == slim :'/sessions/_logout_form'
             -else
               li
                 a href='/register' Register
