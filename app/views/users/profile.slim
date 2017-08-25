@@ -5,11 +5,20 @@ div.row
 div.row
   div.col.s12.m12.l6
     h2.flow-text Your Inventory
-    table
+    table.highlight.bordered
       thead
         tr
+          th Quantity
           th Name
-          th Price
+          th Individual Price
+      - if current_user.cards.any?
+        tbody
+          - current_user.cards.each do |card|
+            tr
+              td = card.quantity
+              td = card.card_type.name
+              td = "$#{card.card_type.data['usd']}"
+
   div.col.s12.m12.l1
   div.col.s12.m12.l5.card
     div.row
