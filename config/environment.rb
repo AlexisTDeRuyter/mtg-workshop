@@ -19,7 +19,7 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 
 require 'erb'
-require 'pry-byebug'
+require 'pry-byebug' if development?
 require 'slim'
 require 'bcrypt'
 

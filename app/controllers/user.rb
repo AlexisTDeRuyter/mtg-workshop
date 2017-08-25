@@ -1,6 +1,6 @@
 get '/register' do
   @user = User.new
-  erb :'users/new'
+  slim :'users/new'
 end
 
 post '/users' do
@@ -11,10 +11,10 @@ post '/users' do
   else
     status 422
     @errors = @user.errors.full_messages
-    erb :'users/new'
+    slim :'users/new'
   end
 end
 
 get '/profile' do
-  erb :'/users/profile'
+  slim :'/users/profile'
 end

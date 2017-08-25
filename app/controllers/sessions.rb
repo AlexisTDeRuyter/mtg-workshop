@@ -1,6 +1,6 @@
 get '/login' do
   @user = User.new
-  erb :'sessions/login'
+  slim :'sessions/login'
 end
 
 post '/login' do
@@ -13,7 +13,7 @@ post '/login' do
     status 422
     @errors = ["Login failed"]
     User.new(email: params[:email])
-    erb :'sessions/login'
+    slim :'sessions/login'
   end
 end
 
