@@ -17,17 +17,32 @@ body
     header.row.col.s12.m12.l12
       nav
         div.nav-wrapper
-          a.brand-logo href='/' MTG Workshop
-          ul#nav-mobile.right.hide-on-med-and-down
+          a.brand-logo.flow-text href='/' MTG Workshop
+          a.button-collapse data-activates='mobile-demo'
+            i.material-icons menu
+          ul.right.hide-on-med-and-down
             - if current_user
               li
-                a href='/profile' = current_user.username
+                a.flow-text href='/profile'
+                  i.material-icons account_circle
               li
                 == slim :'/sessions/_logout_form'
             -else
               li
-                a href='/register' Register
+                a.flow-text href='/register' Register
               li
-                a href='/login' Login
+                a.flow-text href='/login' Login
+          ul.side-nav#mobile-demo
+            - if current_user
+              li
+                a.flow-text href='/profile'
+                  i.material-icons account_circle
+              li
+                == slim :'/sessions/_logout_form'
+            -else
+              li
+                a.flow-text href='/register' Register
+              li
+                a.flow-text href='/login' Login
     == yield
 
