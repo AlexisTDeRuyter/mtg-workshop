@@ -49,9 +49,12 @@ div.row
         tbody
           - current_user.cards.each do |card|
             tr
-              td.flow-text = card.quantity
-              td.flow-text = card.card_type.name
-              td.flow-text = "$#{card.card_type.data['usd']}"
+              td.flow-text
+                a href="/cards/#{card.card_type.id}" = card.quantity
+              td.flow-text
+                a href="/cards/#{card.card_type.id}" = card.card_type.name
+              td.flow-text
+                a href="/cards/#{card.card_type.id}" = "$#{card.card_type.data['usd']}"
 
   div.col.s12.m12.l1
   div.col.s12.m12.l5.card

@@ -1,0 +1,43 @@
+div.row
+  div.col.s12.m12.l12
+    h1.flow-text = "#{@card_type.name} - $#{@card_type.data['usd']}"
+
+div.row
+  div.col.s12.m12.l12.card.horizontal
+    div.card-image
+      img src="#{@card_type.data['image_uris']['normal']}"
+    div.card-stacked
+      div.card-tabs
+        ul.tabs.tabs-fixed-width
+          li.tab
+            a href='#oracle_text' Oracle Text
+          li.tab
+            a href='#legalities' Legalities
+      div.card-content.grey.lighten-4
+        div#oracle_text
+          p.flow-text = @card_type.data['oracle_text']
+          a.waves-effect.waves-light.btn.margin-right-5 href="#{@card_type.data['related_uris']['gatherer']}"
+            i.material-icons.left info
+            | Gatherer
+        div#legalities
+          table.highlight.bordered
+            tbody
+              - @card_type.data['legalities'].each do |format, status|
+                tr
+                  td.flow-text = format
+                  td.flow-text = status
+      div.card-action
+
+        a.waves-effect.waves-light.btn.margin-right-5 href="#{@card_type.data['related_uris']['mtgtop8']}"
+          i.material-icons.left info
+          | MTGTop8
+        a.waves-effect.waves-light.btn.margin-right-5 href="#{@card_type.data['purchase_uris']['tcgplayer']}"
+          i.material-icons.left shopping_cart
+          | TCGPlayer
+        a.waves-effect.waves-light.btn.margin-right-5 href="#{@card_type.data['purchase_uris']['amazon']}"
+          i.material-icons.left shopping_cart
+          | Amazon
+        a.waves-effect.waves-light.btn.margin-right-5 href="#{@card_type.data['purchase_uris']['ebay']}"
+          i.material-icons.left shopping_cart
+          | Ebay
+
