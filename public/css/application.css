@@ -1,0 +1,16 @@
+/** {
+  text-align: center;
+}
+
+li {
+  display: inline;
+}*/
+
+.bg-clean {
+  background-color: #A7D2CB
+  /*background: linear-gradient(to right, #A7D2CB, #47ccb6);*/
+}
+
+.bg-red {
+  background-color: red
+}
