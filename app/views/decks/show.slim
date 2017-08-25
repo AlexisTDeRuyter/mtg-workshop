@@ -1,72 +1,69 @@
 div.row
   div.col.s12.m12.l12
-    h1.flow-text = "Welcome, #{current_user.username}"
+    h1.flow-text = @deck.name
 
 div.row
   div.col.s12.m12.l6
-    h2.flow-text Your Decks
-    table.highlight.bordered
-      thead
-        tr
-          th.flow-text Name
-          th.flow-text Format
-      - if current_user.decks.any?
-        tbody
-          - current_user.decks.each do |deck|
-            tr
-              td.flow-text
-                a href="/decks/#{deck.id}" = deck.name
-              td.flow-text
-                a href="/decks/#{deck.id}" = deck.format
-
-  div.col.s12.m12.l1
-  div.col.s12.m12.l5.card
-    div.row
-      div.col.s12.m12.l5
-        h2.flow-text Add a deck:
-    div.row
-      == slim :'_errors'
-      form action='/decks' method='post'
-        div.input-field.col.s12.m12.l5
-          label for='deck_name' Deck Name
-          input type='text' name='deck[name]'
-        div.input-field.col.s12.m12.l2
-          label for='format' Format
-          input type='text' name='deck[format]'
-        div.col.s12.m12.l5
-          button.btn.waves-effect.waves-light.margin-top-20 type='submit' name='action' Add
-
-div.row
-  div.col.s12.m12.l6
-    h2.flow-text Your Inventory
+    h2.flow-text Mainboard
     table.highlight.bordered
       thead
         tr
           th.flow-text Quantity
           th.flow-text Name
           th.flow-text Individual Price
-      - if current_user.cards.any?
         tbody
-          - current_user.cards.each do |card|
+          - @deck.card_decks.main.each do |card|
             tr
-              td.flow-text = card.quantity
-              td.flow-text = card.card_type.name
-              td.flow-text = "$#{card.card_type.data['usd']}"
+              td.flow-text = card.amount_main
+              td.flow-text = card.card.card_type.name
+              td.flow-text = card.card.card_type.data['usd']
 
   div.col.s12.m12.l1
   div.col.s12.m12.l5.card
     div.row
       div.col.s12.m12.l5
-        h2.flow-text Add a card:
+        h2.flow-text Add a card to the main:
     div.row
       == slim :'_errors'
-      form action='/cards' method='post'
+      form action="/decks/#{@deck.id}/main/new" method='post'
         div.input-field.col.s12.m12.l5
           label for='card_name' Card Name
-          input type='text' name='card[name]'
+          input type='text' name='card_deck[card_name]'
         div.input-field.col.s12.m12.l2
           label for='quantity' Quantity
-          input type='text' name='card[quantity]'
+          input type='text' name='card_deck[quantity]'
         div.col.s12.m12.l5
           button.btn.waves-effect.waves-light.margin-top-20 type='submit' name='action' Add
 
+div.row
+  div.col.s12.m12.l6
+    h2.flow-text Sideboard
+    table.highlight.bordered
+      thead
+        tr
+          th.flow-text Quantity
+          th.flow-text Name
+          th.flow-text Individual Price
+        tbody
+          - @deck.card_decks.side.each do |card|
+            tr
+              td.flow-text = card.amount_side
+              td.flow-text = card.card.card_type.name
+              td.flow-text = card.card.card_type.data['usd']
+
+  div.col.s12.m12.l1
+  div.col.s12.m12.l5.card
+    div.row
+      div.col.s12.m12.l5
+        h2.flow-text Add a card to the side:
+    div.row
+      == slim :'_errors'
+      form action="/decks/#{@deck.id}/side/new" method='post'
+        div.input-field.col.s12.m12.l5
+          label for='card_name' Card Name
+          input type='text' name='card_deck[card_name]'
+        div.input-field.col.s12.m12.l2
+          label for='quantity' Quantity
+          input type='text' name='card_deck[quantity]'
+        div.col.s12.m12.l5
+          button.btn.waves-effect.waves-light.margin-top-20 type='submit' name='action' Add

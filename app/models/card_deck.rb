@@ -2,6 +2,12 @@ class CardDeck < ActiveRecord::Base
   validates :deck_id, :amount_main, :amount_side, presence: true
   validate :four_limit
 
+  scope :main, ->{ where("amount_main > 0") }
+  scope :side, ->{ where("amount_side > 0") }
+
+  belongs_to :card
+  belongs_to :deck
+
   private
 
   def four_limit
