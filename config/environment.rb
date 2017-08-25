@@ -22,6 +22,7 @@ require 'erb'
 require 'pry-byebug' if development?
 require 'slim'
 require 'bcrypt'
+require 'rest-client'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))

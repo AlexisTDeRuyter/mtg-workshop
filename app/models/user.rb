@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validate :password_present
 
   has_many :decks
+  has_many :cards
 
   def password
     @password ||= Password.new(hashed_password)

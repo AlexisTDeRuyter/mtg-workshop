@@ -8,7 +8,7 @@ post '/login' do
   @user = User.authenticate(user_params[:username], user_params[:password])
   if @user
     session[:user_id] = @user.id
-    redirect :'/profile'
+    redirect :"/profile"
   else
     status 422
     @errors = ["Login failed"]

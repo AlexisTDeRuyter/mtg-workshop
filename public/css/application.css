@@ -19,3 +19,8 @@
 .margin-top-20 {
   margin-top: 20px
 }
+
+td a {
+  display: block;
+  color: black;
+}

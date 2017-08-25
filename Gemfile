@@ -17,6 +17,7 @@ gem 'shotgun', '~>0.9.1'
 gem 'pry'
 gem 'slim'
 gem 'bcrypt'
+gem 'rest-client'
 
 group :test do
   gem 'shoulda-matchers'
