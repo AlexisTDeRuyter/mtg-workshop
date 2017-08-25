@@ -1,16 +1,21 @@
-/** {
-  text-align: center;
+.white-icon {
+  color: white;
 }
 
-li {
-  display: inline;
-}*/
-
-.bg-clean {
-  background-color: #A7D2CB
-  /*background: linear-gradient(to right, #A7D2CB, #47ccb6);*/
+.button-as-link-nav {
+  margin: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-.bg-red {
-  background-color: red
+.button-as-link-nav:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.border {
+  border: 2px dashed black;
+}
+
+.margin-top-20 {
+  margin-top: 20px
 }
