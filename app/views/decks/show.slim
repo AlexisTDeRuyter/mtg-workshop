@@ -14,9 +14,12 @@ div.row
         tbody
           - @deck.card_decks.main.each do |card|
             tr
-              td.flow-text = card.amount_main
-              td.flow-text = card.card.card_type.name
-              td.flow-text = card.card.card_type.data['usd']
+              td.flow-text
+                a href="/cards/#{card.card.card_type.id}" = card.amount_main
+              td.flow-text
+                a href="/cards/#{card.card.card_type.id}" = card.card.card_type.name
+              td.flow-text
+                a href="/cards/#{card.card.card_type.id}" = card.card.card_type.data['usd']
 
   div.col.s12.m12.l1
   div.col.s12.m12.l5.card
@@ -47,9 +50,12 @@ div.row
         tbody
           - @deck.card_decks.side.each do |card|
             tr
-              td.flow-text = card.amount_side
-              td.flow-text = card.card.card_type.name
-              td.flow-text = card.card.card_type.data['usd']
+              td.flow-text
+                a href="/cards/#{card.card.card_type.id}" = card.amount_side
+              td.flow-text
+                a href="/cards/#{card.card.card_type.id}" = card.card.card_type.name
+              td.flow-text
+                a href="/cards/#{card.card.card_type.id}" = card.card.card_type.data['usd']
 
   div.col.s12.m12.l1
   div.col.s12.m12.l5.card
