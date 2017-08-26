@@ -20,7 +20,10 @@ post '/decks/:id/main/new' do
   deck = Deck.find(params[:id])
   halt(404, slim(:'404')) unless deck.user == current_user
   card_type = CardType.find_or_query_for(params[:card_deck][:card_name])
-  card = Card.find_or_create_by(user: current_user, card_type: card_type, quantity: params[:card_deck][:quantity])
+  card = current_user.cards.find_by(card_type: card_type)
+  if !card
+    card = Card.create(user: current_user, card_type: card_type, quantity: 0)
+  end
   card_deck = CardDeck.create(card: card, deck: deck, amount_main: params[:card_deck][:quantity])
   if card_deck.save
     redirect "/decks/#{deck.id}"
@@ -33,7 +36,10 @@ post '/decks/:id/side/new' do
   deck = Deck.find(params[:id])
   halt(404, slim(:'404')) unless deck.user == current_user
   card_type = CardType.find_or_query_for(params[:card_deck][:card_name])
-  card = Card.find_or_create_by(user: current_user, card_type: card_type, quantity: params[:card_deck][:quantity])
+  card = current_user.cards.find_by(card_type: card_type)
+  if !card
+    card = Card.create(user: current_user, card_type: card_type, quantity: 0)
+  end
   card_deck = CardDeck.create(card: card, deck: deck, amount_side: params[:card_deck][:quantity])
   if card_deck.save
     redirect "/decks/#{deck.id}"

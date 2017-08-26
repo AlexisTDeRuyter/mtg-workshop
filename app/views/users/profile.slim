@@ -47,7 +47,7 @@ div.row
           th.flow-text Individual Price
       - if current_user.cards.any?
         tbody
-          - current_user.cards.each do |card|
+          - current_user.cards.actual.each do |card|
             tr
               td.flow-text
                 a href="/cards/#{card.card_type.id}" = card.quantity
