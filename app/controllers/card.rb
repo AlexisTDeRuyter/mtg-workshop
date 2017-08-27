@@ -27,3 +27,8 @@ post '/cards' do
     end
   end
 end
+
+delete '/cards/:id' do
+  Card.find(params[:id]).destroy
+  redirect '/profile'
+end

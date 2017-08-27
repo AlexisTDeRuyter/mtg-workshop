@@ -28,3 +28,11 @@ td a {
 .margin-right-5 {
   margin-right: 5px
 }
+
+table.delete-hover > tbody > tr td.delete {
+  display: none;
+}
+
+table.delete-hover > tbody > tr:hover td.delete {
+  display: inline;
+}

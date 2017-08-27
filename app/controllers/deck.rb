@@ -74,3 +74,25 @@ post '/decks/:id/side/new' do
     slim :'decks/show'
   end
 end
+
+delete '/decks/:deck_id/main/cards/:card_id' do
+  @deck = Deck.find(params[:deck_id])
+  card_deck = @deck.card_decks.find(params[:card_id])
+  if card_deck.amount_side == 0
+    card_deck.destroy
+  else
+    card_deck.update(amount_main: 0)
+  end
+  redirect :"/decks/#{@deck.id}"
+end
+
+delete '/decks/:deck_id/side/cards/:card_id' do
+  @deck = Deck.find(params[:deck_id])
+  card_deck = @deck.card_decks.find(params[:card_id])
+  if card_deck.amount_main == 0
+    card_deck.destroy
+  else
+    card_deck.update(amount_side: 0)
+  end
+  redirect :"/decks/#{@deck.id}"
+end

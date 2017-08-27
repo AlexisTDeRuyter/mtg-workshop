@@ -5,12 +5,12 @@ div.row
 div.row
   div.col.s12.m12.l6
     h2.flow-text Mainboard
-    table.highlight.bordered
+    table.highlight.bordered.delete-hover
       thead
         tr
           th.flow-text Quantity
           th.flow-text Name
-          th.flow-text Individual Price
+          th.flow-text colspan='2' Individual Price
         tbody
           - @deck.card_decks.main.each do |card|
             tr
@@ -20,6 +20,11 @@ div.row
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.name
               td.flow-text
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.data['usd']
+              td.flow-text.delete
+                form action="/decks/#{@deck.id}/main/cards/#{card.id}" method='post'
+                  input type='hidden' name='_method' value='delete'
+                  button.btn-flat type='submit' name='action'
+                    i.material-icons.flow-text.red-text delete
 
   div.col.s12.m12.l5.card.push-l1
     div.row
@@ -41,12 +46,12 @@ div.row
 div.row
   div.col.s12.m12.l6
     h2.flow-text Sideboard
-    table.highlight.bordered
+    table.highlight.bordered.delete-hover
       thead
         tr
           th.flow-text Quantity
           th.flow-text Name
-          th.flow-text Individual Price
+          th.flow-text colspan='2' Individual Price
         tbody
           - @deck.card_decks.side.each do |card|
             tr
@@ -56,6 +61,11 @@ div.row
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.name
               td.flow-text
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.data['usd']
+              td.flow-text.delete
+                form action="/decks/#{@deck.id}/side/cards/#{card.id}" method='post'
+                  input type='hidden' name='_method' value='delete'
+                  button.btn-flat type='submit' name='action'
+                    i.material-icons.flow-text.red-text delete
 
   div.col.s12.m12.l5.card.push-l1
     div.row
