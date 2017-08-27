@@ -19,10 +19,9 @@ div.row
               td.flow-text
                 a href="/decks/#{deck.id}" = deck.format
 
-  div.col.s12.m12.l1
-  div.col.s12.m12.l5.card
+  div.col.s12.m12.l5.card.push-l1
     div.row
-      div.col.s12.m12.l5
+      div.col.s12.m12.l12
         h2.flow-text Add a deck:
     div.row
       == slim :'_errors'
@@ -56,10 +55,9 @@ div.row
               td.flow-text
                 a href="/cards/#{card.card_type.id}" = "$#{card.card_type.data['usd']}"
 
-  div.col.s12.m12.l1
-  div.col.s12.m12.l5.card
+  div.col.s12.m12.l5.card.push-l1
     div.row
-      div.col.s12.m12.l5
+      div.col.s12.m12.l12
         h2.flow-text Add a card:
     div.row
       == slim :'_errors'
