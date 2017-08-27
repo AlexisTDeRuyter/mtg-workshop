@@ -21,13 +21,13 @@ div.row
               td.flow-text
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.data['usd']
 
-  div.col.s12.m12.l1
-  div.col.s12.m12.l5.card
+  div.col.s12.m12.l5.card.push-l1
     div.row
-      div.col.s12.m12.l5
-        h2.flow-text Add a card to the main:
+      div.col.s12.m12.l12
+        h2.flow-text Add a card to the mainboard:
     div.row
-      == slim :'_errors'
+      - if @main_errors
+        == slim :'_errors'
       form action="/decks/#{@deck.id}/main/new" method='post'
         div.input-field.col.s12.m12.l5
           label for='card_name' Card Name
@@ -57,13 +57,13 @@ div.row
               td.flow-text
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.data['usd']
 
-  div.col.s12.m12.l1
-  div.col.s12.m12.l5.card
+  div.col.s12.m12.l5.card.push-l1
     div.row
-      div.col.s12.m12.l5
-        h2.flow-text Add a card to the side:
+      div.col.s12.m12.l12
+        h2.flow-text Add a card to the sideboard:
     div.row
-      == slim :'_errors'
+      - if @side_errors
+        == slim :'_errors'
       form action="/decks/#{@deck.id}/side/new" method='post'
         div.input-field.col.s12.m12.l5
           label for='card_name' Card Name
