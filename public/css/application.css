@@ -2,10 +2,15 @@
   color: white;
 }
 
-.button-as-link-nav {
+.icon-button-as-link-nav {
   margin: 0px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.button-as-link-nav {
+  border: none;
+  background: none;
 }
 
 .button-as-link-nav:hover {
@@ -29,10 +34,10 @@ td a {
   margin-right: 5px
 }
 
-table.delete-hover > tbody > tr td.delete {
-  display: none;
+table.delete-hover > tbody > tr > td > form.delete {
+  visibility: hidden;
 }
 
-table.delete-hover > tbody > tr:hover td.delete {
-  display: inline;
+table.delete-hover > tbody > tr:hover > td > form.delete {
+  visibility: visible;
 }

@@ -96,3 +96,8 @@ delete '/decks/:deck_id/side/cards/:card_id' do
   end
   redirect :"/decks/#{@deck.id}"
 end
+
+delete '/decks/:id' do
+  Deck.find(params[:id]).destroy
+  redirect '/profile'
+end

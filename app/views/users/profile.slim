@@ -5,11 +5,11 @@ div.row
 div.row
   div.col.s12.m12.l6
     h2.flow-text Your Decks
-    table.highlight.bordered
+    table.highlight.bordered.delete-hover
       thead
         tr
           th.flow-text Name
-          th.flow-text Format
+          th.flow-text colspan='2' Format
       - if current_user.decks.any?
         tbody
           - current_user.decks.each do |deck|
@@ -18,6 +18,11 @@ div.row
                 a href="/decks/#{deck.id}" = deck.name
               td.flow-text
                 a href="/decks/#{deck.id}" = deck.format
+              td.flow-text
+                form.delete action="/decks/#{deck.id}" method='post'
+                  input type='hidden' name='_method' value='delete'
+                  button.btn-flat type='submit' name='action'
+                    i.material-icons.flow-text.red-text delete
 
   div.col.s12.m12.l5.card.push-l1
     div.row
@@ -55,8 +60,8 @@ div.row
                 a href="/cards/#{card.card_type.id}" = card.card_type.name
               td.flow-text
                 a href="/cards/#{card.card_type.id}" = "$#{card.card_type.data['usd']}"
-              td.flow-text.delete
-                form action="/cards/#{card.id}" method='post'
+              td.flow-text
+                form.delete action="/cards/#{card.id}" method='post'
                   input type='hidden' name='_method' value='delete'
                   button.btn-flat type='submit' name='action'
                     i.material-icons.flow-text.red-text delete

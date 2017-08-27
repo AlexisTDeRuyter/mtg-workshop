@@ -20,8 +20,8 @@ div.row
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.name
               td.flow-text
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.data['usd']
-              td.flow-text.delete
-                form action="/decks/#{@deck.id}/main/cards/#{card.id}" method='post'
+              td.flow-text
+                form.delete action="/decks/#{@deck.id}/main/cards/#{card.id}" method='post'
                   input type='hidden' name='_method' value='delete'
                   button.btn-flat type='submit' name='action'
                     i.material-icons.flow-text.red-text delete
@@ -61,8 +61,8 @@ div.row
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.name
               td.flow-text
                 a href="/cards/#{card.card.card_type.id}" = card.card.card_type.data['usd']
-              td.flow-text.delete
-                form action="/decks/#{@deck.id}/side/cards/#{card.id}" method='post'
+              td.flow-text
+                form.delete action="/decks/#{@deck.id}/side/cards/#{card.id}" method='post'
                   input type='hidden' name='_method' value='delete'
                   button.btn-flat type='submit' name='action'
                     i.material-icons.flow-text.red-text delete
