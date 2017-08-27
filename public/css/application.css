@@ -41,3 +41,18 @@ table.delete-hover > tbody > tr > td > form.delete {
 table.delete-hover > tbody > tr:hover > td > form.delete {
   visibility: visible;
 }
+
+@media only screen and (max-width: 992px) {
+  .icon-button-as-link-nav {
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  .button-as-link-nav {
+    float: left;
+    height: 48px;
+    line-height: 48px;
+    margin: 0 32px 0 0;
+    width: 100%;
+  }
+
+}
