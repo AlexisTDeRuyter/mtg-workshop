@@ -21,6 +21,11 @@ post '/decks/:id/main/new' do
   @deck = Deck.find(params[:id])
   halt(404, slim(:'404')) unless @deck.user == current_user
   card_type = CardType.find_or_query_for(params[:card_deck][:card_name])
+  if card_type.kind_of?(Array)
+    @main_errors = true
+    @errors = card_type
+    halt(404, slim(:'decks/show'))
+  end
   card = current_user.cards.find_by(card_type: card_type)
   if !card
     card = Card.create(user: current_user, card_type: card_type, quantity: 0)
@@ -45,6 +50,11 @@ post '/decks/:id/side/new' do
   @deck = Deck.find(params[:id])
   halt(404, slim(:'404')) unless @deck.user == current_user
   card_type = CardType.find_or_query_for(params[:card_deck][:card_name])
+  if card_type.kind_of?(Array)
+    @side_errors = true
+    @errors = card_type
+    halt(404, slim(:'decks/show'))
+  end
   card = current_user.cards.find_by(card_type: card_type)
   if !card
     card = Card.create(user: current_user, card_type: card_type, quantity: 0)
