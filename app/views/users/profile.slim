@@ -5,7 +5,7 @@ div.row
 div.row
   div.col.s12.m12.l6
     h2.flow-text Your Decks
-    table.highlight.bordered.delete-hover
+    table.highlight.bordered.delete-hover.deck-list
       thead
         tr
           th.flow-text Name
@@ -13,16 +13,7 @@ div.row
       - if current_user.decks.any?
         tbody
           - current_user.decks.each do |deck|
-            tr
-              td.flow-text
-                a href="/decks/#{deck.id}" = deck.name
-              td.flow-text
-                a href="/decks/#{deck.id}" = deck.format
-              td.flow-text
-                form.delete action="/decks/#{deck.id}" method='post'
-                  input type='hidden' name='_method' value='delete'
-                  button.btn-flat type='submit' name='action'
-                    i.material-icons.flow-text.red-text delete
+            == slim :'decks/_list_deck', locals: {deck: deck}
 
   div.col.s12.m12.l5.card.push-l1
     div.row
@@ -31,7 +22,7 @@ div.row
     div.row
       - if @deck_errors
         == slim :'_errors'
-      form action='/decks' method='post'
+      form.add-deck action='/decks' method='post'
         div.input-field.col.s12.m12.l5
           label for='deck_name' Deck Name
           input type='text' name='deck[name]'

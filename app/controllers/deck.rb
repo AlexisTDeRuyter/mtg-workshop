@@ -8,12 +8,23 @@ post '/decks' do
   halt(404, slim(:'404')) unless logged_in?
   params[:deck][:user] = current_user
   deck = Deck.create(params[:deck])
-  if deck.save
-    redirect '/profile'
+  if request.xhr?
+    if deck.save
+      content_type :json
+      {content: (slim :'decks/_list_deck', layout: false, locals: {deck: deck})}.to_json
+    else
+      status 422
+      @errors = deck.errors.full_messages
+      slim :'_errors', layout: false
+    end
   else
-    @deck_errors = true
-    @errors = deck.errors.full_messages
-    slim :'users/profile'
+    if deck.save
+      redirect '/profile'
+    else
+      @deck_errors = true
+      @errors = deck.errors.full_messages
+      slim :'users/profile'
+    end
   end
 end
 
