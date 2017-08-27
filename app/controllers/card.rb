@@ -16,6 +16,7 @@ post '/cards' do
     if card.save
       redirect '/profile'
     else
+      @card_errors = true
       @errors = card.errors.full_messages
       slim :'users/profile'
     end

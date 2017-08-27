@@ -12,7 +12,7 @@ post '/login' do
   else
     status 422
     @errors = ["Login failed"]
-    User.new(email: params[:email])
+    @user = User.new(email: params[:email])
     slim :'sessions/login'
   end
 end

@@ -24,7 +24,8 @@ div.row
       div.col.s12.m12.l12
         h2.flow-text Add a deck:
     div.row
-      == slim :'_errors'
+      - if @deck_errors
+        == slim :'_errors'
       form action='/decks' method='post'
         div.input-field.col.s12.m12.l5
           label for='deck_name' Deck Name
@@ -60,7 +61,8 @@ div.row
       div.col.s12.m12.l12
         h2.flow-text Add a card:
     div.row
-      == slim :'_errors'
+      - if @card_errors
+        == slim :'_errors'
       form action='/cards' method='post'
         div.input-field.col.s12.m12.l5
           label for='card_name' Card Name
